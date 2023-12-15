@@ -11,7 +11,6 @@ export class Guile extends Fighter {
   constructor(playerId, onAttackHit, entityList) {
     super(playerId, onAttackHit);
     this.entityList = entityList;
-    console.log(playerId);
     this.image = document.querySelector('img[alt="guile"]');
     this.frames = new Map([
      // Idle stance

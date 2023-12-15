@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Street Fighter</title>
     <style>
-        html,
+       html,
         body {
             padding: 0;
             margin: 0;
@@ -33,10 +33,51 @@
             display: none;
         }
     </style>
+    <link rel="stylesheet" href="./style.css">
     <script type="module" defer src="./src/index.js"></script>
 </head>
 
 <body>
+
+    <div id="container">
+        <div class="row1">
+          <img class="map" id="map" src="images/selection_images/map.png" alt="" srcset="">
+        </div>
+        <img src="./images/selection_images/player3.png" alt="" width="300" height="50">
+        <div class="row2">
+          <div class="selectionImageOne">
+            <div class="selectedNameOne">
+              <!-- <img src="./images/ryu.png" alt=""> -->
+            </div>
+            <img id="char-selected-one" src="images/selection_images/char-ryu.png" alt="">
+          </div>
+          <div class="char-grid">
+            <div class="char-grid__row1">
+              <div class="squares square1"><img class="characters" id="grid-ryu" src="images/selection_images/char-grid-ryu.png"><img class="selectedOne" src="images/selection_images/selected.png"></div>
+              <div class="squares square2"><img class="characters" id="grid-honda" src="images/selection_images/char-grid-honda.png"></div>
+              <div class="squares square3"><img class="characters" id="grid-blanka" src="images/selection_images/char-grid-blanka.png"></div>
+              <div class="squares square4"> <img class="characters" id="grid-guile" src="images/selection_images/char-grid-guile.png"></div>
+              <div class="squares square5"><img class="characters" id="grid-balrog" src="images/selection_images/char-grid-balrog.png"></div>
+              <div class="squares square6"> <img class="characters" id="grid-vega" src="images/selection_images/char-grid-vega.png"></div>
+            </div>
+            <div class="char-grid__row2">
+              <div class="squares square7"><img class="characters" id="grid-ken" src="images/selection_images/char-grid-ken.png"><img class="selectedTwo" src="images/selection_images/selected 2p.png"></div>
+              <div class="squares square8"><img class="characters" id="grid-chunli" src="images/selection_images/char-grid-chunli.png"></div>
+              <div class="squares square9"><img class="characters" id="grid-zangief" src="images/selection_images/char-grid-zangief.png"></div>
+              <div class="squares square10"><img class="characters" id="grid-dhalsim" src="images/selection_images/char-grid-dhalsim.png"></div>
+              <div class="squares square11"><img class="characters" id="grid-sagat" src="images/selection_images/char-grid-sagat.png"></div>
+              <div class="squares square12"><img class="characters" id="grid-bison" src="images/selection_images/char-grid-bison.png"></div>
+            </div>
+          </div>
+          <div class="selectionImageTwo">
+            <div class="selectedNameTwo">
+              <!-- <img src="./images/ken.png" alt=""> -->
+            </div>
+            <img id="char-selected-two" src="images/selection_images/char-ken.png" alt="">
+          </div>
+        </div>
+      </div>
+
 
     <canvas width="384" height="224" id="canvas"> </canvas>
     <img src="./images/ken-stage.png" alt="stage">
@@ -47,9 +88,21 @@
     <img src="./images/sagatSprites.png" alt="sagat">
     <img src="./images/guileSprites.png" alt="guile">
 
+<!-- 
     <audio 
         src="./sounds/background-music.mp3" 
         id="background-music" 
+        preload="auto">
+    </audio> -->
+
+    <audio 
+        src="./sounds/move-grid.mp3" 
+        id="move-grid" 
+        preload="auto">
+    </audio>
+    <audio 
+        src="./sounds/selected_sf2.mp3" 
+        id="selected-music" 
         preload="auto">
     </audio>
 

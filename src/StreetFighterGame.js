@@ -153,7 +153,7 @@ function getLoser(context, loserName) {
       context.drawImage(endBannerName, 22,89,3,10, 335, 140, 10, 40);
     }
     
-    
+    // RESTARTS THE GAME 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
     canvas_window = false;
