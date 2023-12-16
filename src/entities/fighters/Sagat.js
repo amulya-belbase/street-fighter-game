@@ -11,7 +11,6 @@ export class Sagat extends Fighter {
   constructor(playerId, onAttackHit, entityList) {
     super(playerId, onAttackHit);
     this.entityList = entityList;
-    console.log(playerId);
     this.image = document.querySelector('img[alt="sagat"]');
     this.frames = new Map([
      // Idle stance
