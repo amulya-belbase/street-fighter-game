@@ -6,14 +6,11 @@ const pressedKeys = new Set();
 
 function handleKeyDown(event){
     event.preventDefault();
-    
     heldKeys.add(event.code);
 }
 
 function handleKeyUp(event){
-
     event.preventDefault();
-
     heldKeys.delete(event.code);
     pressedKeys.delete(event.code);
 }

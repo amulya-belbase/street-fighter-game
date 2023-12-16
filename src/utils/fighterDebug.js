@@ -1,4 +1,4 @@
-import { gameState } from "../state/gameState.js";
+import { gameState } from "../selectionMenu.js";
 
 function drawCross(context, camera, position, color) {
   context.beginPath();

@@ -1,4 +1,4 @@
-import { StreetFighterGame, canvas_window } from "../../StreetFighterGame.js";
+import { StreetFighterGame } from "../../StreetFighterGame.js";
 import {
   HEALTH_CRITICAL_HIT_POINTS,
   HEALTH_DAMAGE_COLOR,
@@ -10,8 +10,7 @@ import {
   TIME_FRAME_KEYS,
 } from "../../constants/battle.js";
 import { FPS } from "../../constants/game.js";
-import { finalBanner } from "../../state/gameEndState.js";
-import { gameState } from "../../state/gameState.js";
+import { gameState } from "../../selectionMenu.js";
 import { drawFrame, getContext } from "../../utils/context.js";
 
 let flag = false;
@@ -116,6 +115,7 @@ export class StatusBar {
     ["tag-ryu", [16, 56, 28, 9]],
     ["tag-sagat", [216,72,47,9]],     // Need to change here for the name ====================<<<<<<
     ["tag-guile", [88,72,42,9]],
+    ["tag-balrog", [296,40,55,9]],
   ]);
   constructor() {
     this.image = document.querySelector('img[alt="misc"]');
@@ -139,7 +139,6 @@ export class StatusBar {
   }
 
   updateHealthBars(time) {
-    // console.log(thisko);
     for (const index in this.healthBars) {
       if (
         this.healthBars[index].hitPoints <= gameState.fighters[index].hitPoints
@@ -161,6 +160,7 @@ export class StatusBar {
         } else {
           winnerName = name1;
         }
+        console.log(winnerName,loserName);
         setTimeout(() => this.resetHealth(winnerName,loserName,this), 1000);
       }
     }
@@ -191,7 +191,6 @@ export class StatusBar {
   }
 
   drawFrame(context, frameKey, x, y, direction = 1) {
-    // console.log(this.frames.get(frameKey))
     drawFrame(context, this.image, this.frames.get(frameKey), x, y, direction);
   }
 
@@ -227,7 +226,6 @@ export class StatusBar {
   drawTime(context) {
     const timeString = String(this.time).padStart(2, "00");
     const flashFrame = TIME_FRAME_KEYS[Number(this.useFlashFrames)];
-    // console.log(timeString, flashFrame)
     this.drawFrame(context, `${flashFrame}-${timeString.charAt(0)}`, 178, 33);
     this.drawFrame(context, `${flashFrame}-${timeString.charAt(1)}`, 194, 33);
   }

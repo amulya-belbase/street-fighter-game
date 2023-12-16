@@ -2,7 +2,7 @@ import { registerKeyboardEvent } from "./engine/InputHandler.js";
 import { getContext } from "./utils/context.js";
 import { BattleScene } from "./scenes/BattleScene.js";
 import { HEALTH_MAX_HIT_POINTS } from "./constants/battle.js";
-import { gameState } from "./state/gameState.js";
+import { gameState } from "./selectionMenu.js";
 
 export let canvas_window = false;
 let array = [];
@@ -43,7 +43,8 @@ export class StreetFighterGame {
     window.requestAnimationFrame(this.frame.bind(this));
   }
 
-
+// gets the winnerName and loserName from statusbar after a player's health reaches 0
+// calls winner function, loser function and reset function
   end(winnerName,loserName,thisInstance) {
     canvas_window = true;
     getWinner(this.context,winnerName);
@@ -52,6 +53,7 @@ export class StreetFighterGame {
   }
 }
 
+// resets statusbar to it's initial values
 function resetGame(thisInstance){
   thisInstance.koFrame = 0;
   thisInstance.koAnimationTimer = 0;
@@ -106,6 +108,13 @@ function getWinner(context, winnerName) {
     context.drawImage(endBannerName, 88,72,42,9, context.canvas.width/2 - 15, 66, 42, 9);
     getLetters(context);
     return;
+
+    case "balrog":
+      context.drawImage(endBanner, 228,868,128,112, 10, 10, 128, 112);   
+      context.drawImage(endBannerName, 296,40,55,9, context.canvas.width/2 - 22, 66, 55, 9);
+      getLetters(context);
+      return;
+
     }
 }
 
@@ -127,6 +136,11 @@ function getLoser(context, loserName) {
     case "guile":
       context.drawImage(endBanner, 587,642,108,112, context.canvas.width - 122, 10, 108, 112);
       return;
+
+    case "balrog":
+      context.drawImage(endBanner, 357,868,128,112, context.canvas.width - 122, 10, 128, 112);
+      return;
+
     }
   }
     
@@ -145,7 +159,7 @@ function getLoser(context, loserName) {
       context.drawImage(endBannerName, 197, 113, 10, 10, 80, 140, 40, 40);
       context.drawImage(endBannerName, 77, 125, 10, 10, 120, 140, 40, 40);
       
-      //SUCK
+      //SUCK!
       context.drawImage(endBannerName, 53, 125, 10, 10, 170, 140, 40, 40);
       context.drawImage(endBannerName, 77, 125, 10, 10, 210, 140, 40, 40);
       context.drawImage(endBannerName, 53, 113, 10, 10, 250, 140, 40, 40);

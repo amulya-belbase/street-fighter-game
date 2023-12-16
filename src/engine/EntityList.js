@@ -8,10 +8,8 @@ add(EntityClass, time, ...args ){
 
 remove(entity){
     const index = this.entities.indexOf(entity);
-
     if(index < 0) return;
     this.entities.splice(index, 1);
-    // this.entities = this.entities.filter((thisEntity) => thisEntity !== entity);
 }
 
 update(time,context, camera){

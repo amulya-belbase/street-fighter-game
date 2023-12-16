@@ -1,17 +1,9 @@
-// import { playSound, stopSound } from "./engine/soundHandler.js";
-
-// let move_grid_bgm = document.querySelector('audio#move-grid');
-// let selected_bgm = document.querySelector('audio#selected-music');
-
-// Grab img element that display the character selected on the left
 
 import { StreetFighterGame } from "./StreetFighterGame.js";
 import { getCharactersArray } from "./state/gameState.js";
 
-// It is going to be used to dynamically change the img.src to the character selected by the grid
 const charSelectedOne = document.getElementById("char-selected-one");
 const charSelectedTwo = document.getElementById("char-selected-two");
-// Each square is one character in the grid
 const squares = document.querySelectorAll(".squares");
 
 // We need this to make thr grid move, to know where the selected square is at;
@@ -21,7 +13,8 @@ let positionTwo = 6;
 let playerOneTopOrBottom = "top";
 let playerTwoTopOrBottom = "bottom";
 
-// ========================================
+// =================================================================================
+
 const playerOne = document.createElement("img");
 const playerTwo = document.createElement("img");
 
@@ -49,18 +42,14 @@ const playerImageMap = {
 // ==================================== FOR PLAYER ONE ================================
 
 export function selectionMenu(){
-
-  document.getElementById("container").style.display = "flex";
-    // charSelectedOne.src = "images/selection_images/ryu.png";
-    // charSelectedTwo.src = "images/selection_images/ken.png";
-
+    document.getElementById("container").style.display = "flex";
     dynamicChange();
     dynamicChangeTwo();
-    // CSS DISPLAY OFF  => onkey event SPACE && ENTER / OR AFTER ARRAY VALUE 2 
 }
 
+
+
 function dynamicChange() {
-  // playSound(move_grid_bgm);
   new Audio("sounds/move-grid.mp3").play();
   
   playerOne.src = "images/selection_images/selected.png";
@@ -82,7 +71,7 @@ function dynamicChange() {
   targetOne.appendChild(playerOneName);
 }
 
-let audioOne = null; // Define audio outside the event listener
+let audioOne = null; 
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "Enter") {
@@ -99,7 +88,7 @@ document.addEventListener("keydown", (event) => {
 
     const playerObj= {
       player: 1,
-      playerName: playerOne.previousSibling.id.split("-")[1], // Extract "ken"
+      playerName: playerOne.previousSibling.id.split("-")[1], 
     };
     if(!playerObj.playerName){
       playerObj.playerName = 'ryu';
@@ -175,7 +164,6 @@ document.addEventListener("keydown", (event) => {
 // ===================================== FOR PLAYER TWO ===============================
 
 function dynamicChangeTwo() {
-  // playSound(move_grid_bgm);
   new Audio("sounds/move-grid.mp3").play();
 
   playerTwo.src = "images/selection_images/selected 2p.png";
@@ -197,24 +185,24 @@ function dynamicChangeTwo() {
   targetTwo.appendChild(playerTwoName);  
 }
 
-let audioTwo = null; // Define audio outside the event listener
+let audioTwo = null; 
 
 
 document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     // playSound(selected_bgm);
-    if (!audioTwo || audioTwo.ended) { // If audio doesn't exist or has ended, play it
+    if (!audioTwo || audioTwo.ended) { 
       audioTwo = new Audio("sounds/selected_sf2.mp3");
       audioTwo.play();
 
-      audioTwo.addEventListener('ended', () => { // Stop audioTwo when it's finished playing
+      audioTwo.addEventListener('ended', () => { 
         audioTwo.pause();
         audioTwo.currentTime = 0;
       });
     }
     const playerObj= {
       player: 2,
-      playerName: playerTwo.previousSibling.id.split("-")[1], // Extract "ken"
+      playerName: playerTwo.previousSibling.id.split("-")[1], 
     };
     if(!playerObj.playerName){
       playerObj.playerName = 'ken';
@@ -291,17 +279,16 @@ document.addEventListener("keydown", (event) => {
 
 // ============================ FOR PLAYERS ARRAY =============================
 
+export let gameState;
 const array = [];
 function confirmPlayer(player) {
   while (array.length < 2 && !array.includes(player)) {
-    array.push(player); // adding images here, splice thing of yesterday
+    array.push(player); 
     if (array.length === 2) {
-      console.log(array);
       document.getElementById("container").style.display = "none";
-      getCharactersArray(array);
-      
-      const newGame = new StreetFighterGame();
-      setTimeout(newGame.start(), 2000);
+      gameState = getCharactersArray(array);
+      console.log(gameState);
+      new StreetFighterGame().start();
     }
   }
 }

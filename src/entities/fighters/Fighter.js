@@ -628,7 +628,6 @@ export class Fighter {
       this.playerId, 
       hitPosition, 
       attackStrength,
-      // this.states[this.currentState].attackStrength,
       );
       this.changeState(newState);
 

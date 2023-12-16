@@ -213,7 +213,6 @@ export class KenStage{
     drawBackground(context, camera){
         this.drawSkyOcean(context,camera);
         this.drawBoat(context, camera); 
-        // this.drawFrame(context, 'stage-floor', Math.floor(192 - (camera.position.x)), 176-camera.position.y);
         this.drawFloor(context,camera);
         this.drawSmallBollards(context,camera);
         this.drawFrame(context, 'barrels', Math.floor(872 - camera.position.x), 120 - camera.position.y);

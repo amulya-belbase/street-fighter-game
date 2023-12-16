@@ -4,7 +4,7 @@ export function playSound(sound, volume=1){
     if(!sound.paused && sound.currentTime > 0){
         sound.currentTime = 0;
     } else {
-        // sound.play();            // to play the bgm
+        sound.play();            // to play the bgm
     }
 }
 

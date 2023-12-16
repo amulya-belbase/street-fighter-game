@@ -1,7 +1,6 @@
-import { FighterAttackBaseData, FighterAttackStrength, FighterAttackType, FighterHurtBox, FighterState } from "../../../constants/fighter.js";
+import { FighterAttackStrength, FighterAttackType, FighterHurtBox } from "../../../constants/fighter.js";
 import { fireBallVelocity, FireballState, FireballCollidedState } from "../../../constants/fireball.js";
 import { FRAME_TIME } from "../../../constants/game.js";
-import { EntityList } from "../../../engine/EntityList.js";
 import { boxOverlap, getActualBoxDimensions } from "../../../utils/collision.js";
 
 // can use indexes to map for each character
@@ -28,7 +27,7 @@ const animations = {
 };
 
 export class Fireball {
-    image = document.querySelector('img[alt="ken"]');
+    image = document.querySelector('img[alt="ken"]');       // only ken fireball used here
     animationFrame = 0;
     state = FireballState.ACTIVE;
 

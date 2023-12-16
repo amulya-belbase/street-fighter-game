@@ -23,8 +23,6 @@ let frameIndex = 0;
 let delay = 1000/10; // Delay in milliseconds between frames
 let cameraY = 0;
 export function animateWelcomeScreen() {
-    // new Audio("../sounds/theme-ken-main.cps1.mp3").play();
-    // index less than length of the fighters array
     if (frameIndex < FIGHTERS.length) {
         const [x, y, width, height] = FIGHTERS[frameIndex];     // destructuring fighters array
         ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas

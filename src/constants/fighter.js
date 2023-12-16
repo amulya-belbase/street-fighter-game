@@ -9,11 +9,13 @@ export const FighterDirection = {
     RIGHT: 1,
 };
 
+// Add character here after class creation of that character
 export const FighterId = {
     RYU: 'Ryu',
     KEN: 'Ken',
     SAGAT: 'Sagat',
     GUILE: 'Guile',
+    BALROG: 'Balrog',
 };
 
 export const FighterAttackType = {

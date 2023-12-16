@@ -1,16 +1,14 @@
 import {
-  FIGHTER_HURT_DELAY,
   FighterAttackBaseData,
   FighterAttackStrength,
-  FighterId,
 } from "../constants/fighter.js";
 import { STAGE_MID_POINT, STAGE_PADDING } from "../constants/stage.js";
 import { Camera } from "../engine/Camera.js";
-import { Ryu, Ken, Sagat, Guile } from "../entities/fighters/index.js";
+import { Ryu, Ken, Sagat, Guile, Balrog } from "../entities/fighters/index.js";
 import { FpsCounter } from "../entities/overlays/FpsCounter.js";
 import { StatusBar } from "../entities/overlays/StatusBar.js";
 import { KenStage } from "../entities/stage/KenStage.js";
-import { gameState } from "../state/gameState.js";
+import { gameState } from "../selectionMenu.js";
 import {
   LightHitSplash,
   HeavyHitSplash,
@@ -33,7 +31,6 @@ export class BattleScene {
   }
 
   getFighterEntityClass(id) {
-    // console.log(id);
         switch(id) {
             case 'Ryu':
                 return Ryu;
@@ -43,13 +40,14 @@ export class BattleScene {
                 return Sagat; // Assuming there's a Honda class
             case 'Guile':
                 return Guile;
+            case 'Balrog':
+              return Balrog;
             default:
                 throw new Error('Unimplemented fighter entity request!');
         }
   }
 
   getFighterEntity(fighterState, index) {
-    // console.log(fighterState, index);
     const FighterEntityClass = this.getFighterEntityClass(fighterState.id);
     return new FighterEntityClass(
       index,
@@ -126,7 +124,6 @@ export class BattleScene {
     this.updateFighters(time, context);
     this.stage.update(time);
     this.entities.update(time, context, this.camera);
-    // this.updateEntities(time,context);
     this.camera.update(time, context);
     this.updateOverlays(time, context);
   }
@@ -146,7 +143,6 @@ export class BattleScene {
     this.stage.drawBackground(context, this.camera);
     this.drawFighters(context);
     this.entities.draw(context, this.camera);
-    // this.drawEntities(context);
     this.stage.drawForeground(context, this.camera);
     this.drawOverlays(context);
   }
