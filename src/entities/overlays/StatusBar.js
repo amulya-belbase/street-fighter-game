@@ -154,7 +154,6 @@ export class StatusBar {
         } else {
           winnerName = name1;
         }
-        console.log(winnerName,loserName);
         setTimeout(() => this.resetHealth(winnerName,loserName,this), 1000);
       }
     }
