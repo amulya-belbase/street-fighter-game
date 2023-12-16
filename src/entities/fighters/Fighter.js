@@ -18,7 +18,6 @@ import {
   STAGE_PADDING,
 } from "../../constants/stage.js";
 import { boxOverlap, getActualBoxDimensions, rectsOverLap } from "../../utils/collision.js";
-import * as DEBUG from "../../utils/fighterDebug.js";
 import { playSound, stopSound } from "../../engine/soundHandler.js";
 import { FRAME_TIME } from "../../constants/game.js";
 
@@ -632,7 +631,6 @@ export class Fighter {
       this.changeState(newState);
 
 
-    DEBUG.logHit(this, attackStrength, hurtLocation);
   }
 
   updateStageConstraints(time, context, camera) {
@@ -781,6 +779,5 @@ export class Fighter {
       height
     );
     context.setTransform(1, 0, 0, 1, 0, 0);
-    DEBUG.drawCollisionInfo(this, context, camera);
   }
 }

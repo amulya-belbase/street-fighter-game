@@ -5,7 +5,6 @@ import {
 import { STAGE_MID_POINT, STAGE_PADDING } from "../constants/stage.js";
 import { Camera } from "../engine/Camera.js";
 import { Ryu, Ken, Sagat, Guile, Balrog } from "../entities/fighters/index.js";
-import { FpsCounter } from "../entities/overlays/FpsCounter.js";
 import { StatusBar } from "../entities/overlays/StatusBar.js";
 import { KenStage } from "../entities/stage/KenStage.js";
 import { gameState } from "../selectionMenu.js";
@@ -27,7 +26,7 @@ export class BattleScene {
     this.stage = new KenStage();
     this.entities = new EntityList();
     this.startRound();
-    this.overlays = [new StatusBar(this.fighters), new FpsCounter()];
+    this.overlays = [new StatusBar(this.fighters)];
   }
 
   getFighterEntityClass(id) {

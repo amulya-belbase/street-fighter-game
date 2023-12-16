@@ -24,18 +24,18 @@ const playerOneName = document.createElement("img");
 const playerTwoName = document.createElement("img");
 
 const playerImageMap = {
-  "ryu": "../images/selection_images/ryu.png",
-  "honda": "../images/selection_images/honda.png",
-  "blanka": "../images/selection_images/blanka.png",
-  "guile": "../images/selection_images/guile.png",
-  "balrog": "../images/selection_images/balrog.png",
-  "vega": "../images/selection_images/vega.png",
-  "ken": "../images/selection_images/ken.png",
-  "chunli": "../images/selection_images/chunli.png",
-  "zangief": "../images/selection_images/zangief.png",
-  "dhalsim": "../images/selection_images/dhalsim.png",
-  "sagat": "../images/selection_images/sagat.png",
-  "bison": "../images/selection_images/bison.png",
+  "ryu": "./images/selection_images/ryu.png",
+  "honda": "./images/selection_images/honda.png",
+  "blanka": "./images/selection_images/blanka.png",
+  "guile": "./images/selection_images/guile.png",
+  "balrog": "./images/selection_images/balrog.png",
+  "vega": "./images/selection_images/vega.png",
+  "ken": "./images/selection_images/ken.png",
+  "chunli": "./images/selection_images/chunli.png",
+  "zangief": "./images/selection_images/zangief.png",
+  "dhalsim": "./images/selection_images/dhalsim.png",
+  "sagat": "./images/selection_images/sagat.png",
+  "bison": "./images/selection_images/bison.png",
 };
 
 
@@ -50,9 +50,9 @@ export function selectionMenu(){
 
 
 function dynamicChange() {
-  new Audio("../sounds/move-grid.mp3").play();
+  new Audio("./sounds/move-grid.mp3").play();
   
-  playerOne.src = "../images/selection_images/selected.png";
+  playerOne.src = "./images/selection_images/selected.png";
   playerOne.classList.add("selectedOne");
   squares[positionOne].appendChild(playerOne);
   
@@ -61,7 +61,7 @@ function dynamicChange() {
   if(!charSelectedOneString){
     charSelectedOneString = 'char-ryu';
   }
-  charSelectedOne.src = `../images/selection_images/${charSelectedOneString}.png`;
+  charSelectedOne.src = `./images/selection_images/${charSelectedOneString}.png`;
   
   let name = playerOne.previousSibling.id.split("-")[1]; 
   if(!name){
@@ -77,7 +77,7 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "Enter") {
     
     if (!audioOne || audioOne.ended) { // If audio doesn't exist or has ended, play it
-      audioOne = new Audio("../sounds/selected_sf2.mp3");
+      audioOne = new Audio("./sounds/selected_sf2.mp3");
       audioOne.play();
 
       audioOne.addEventListener('ended', () => { // Stop audio when it's finished playing
@@ -100,7 +100,7 @@ document.addEventListener("keydown", (event) => {
     if (positionOne == 5) {
       squares[positionOne].removeChild(document.querySelector(".selectedOne"));
       positionOne = 0;
-      charSelectedOne.src = "../images/selection_images/char-ryu.png";
+      charSelectedOne.src = "./images/selection_images/char-ryu.png";
       dynamicChange();
       return;
     }
@@ -108,7 +108,7 @@ document.addEventListener("keydown", (event) => {
     if (positionOne == 11) {
       squares[positionOne].removeChild(document.querySelector(".selectedOne"));
       positionOne = 6;
-      charSelectedOne.src = "../images/selection_images/char-ken.png";
+      charSelectedOne.src = "./images/selection_images/char-ken.png";
       dynamicChange();
       return;
     }
@@ -123,7 +123,7 @@ document.addEventListener("keydown", (event) => {
     if (positionOne == 0) {
       squares[positionOne].removeChild(document.querySelector(".selectedOne"));
       positionOne = 5;
-      charSelectedOne.src = "../images/selection_images/char-vega.png";
+      charSelectedOne.src = "./images/selection_images/char-vega.png";
       dynamicChange();
       return;
     }
@@ -131,7 +131,7 @@ document.addEventListener("keydown", (event) => {
     if (positionOne == 6) {
       squares[positionOne].removeChild(document.querySelector(".selectedOne"));
       positionOne = 11;
-      charSelectedOne.src = "../images/selection_images/char-bison.png";
+      charSelectedOne.src = "./images/selection_images/char-bison.png";
       dynamicChange();
       return;
     }
@@ -164,9 +164,9 @@ document.addEventListener("keydown", (event) => {
 // ===================================== FOR PLAYER TWO ===============================
 
 function dynamicChangeTwo() {
-  new Audio("../sounds/move-grid.mp3").play();
+  new Audio("./sounds/move-grid.mp3").play();
 
-  playerTwo.src = "../images/selection_images/selected 2p.png";
+  playerTwo.src = "./images/selection_images/selected 2p.png";
   playerTwo.classList.add("selectedTwo");
   squares[positionTwo].appendChild(playerTwo);
   
@@ -175,7 +175,7 @@ function dynamicChangeTwo() {
   if(!charSelectedTwoString){
     charSelectedTwoString = 'char-ken';
   }
-  charSelectedTwo.src = `../images/selection_images/${charSelectedTwoString}.png`;
+  charSelectedTwo.src = `./images/selection_images/${charSelectedTwoString}.png`;
   
   let name = playerTwo.previousSibling.id.split("-")[1]; 
   if(!name){
@@ -192,7 +192,7 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "Space") {
     // playSound(selected_bgm);
     if (!audioTwo || audioTwo.ended) { 
-      audioTwo = new Audio("../sounds/selected_sf2.mp3");
+      audioTwo = new Audio("./sounds/selected_sf2.mp3");
       audioTwo.play();
 
       audioTwo.addEventListener('ended', () => { 
@@ -214,7 +214,7 @@ document.addEventListener("keydown", (event) => {
     if (positionTwo == 11) {
       squares[positionTwo].removeChild(document.querySelector(".selectedTwo"));
       positionTwo = 6;
-      charSelectedTwo.src = "../images/selection_images/char-ken.png";
+      charSelectedTwo.src = "./images/selection_images/char-ken.png";
       dynamicChangeTwo();
       return;
     }
@@ -222,7 +222,7 @@ document.addEventListener("keydown", (event) => {
     if (positionTwo == 5) {
       squares[positionTwo].removeChild(document.querySelector(".selectedTwo"));
       positionTwo = 0;
-      charSelectedTwo.src = "../images/selection_images/char-ryu.png";
+      charSelectedTwo.src = "./images/selection_images/char-ryu.png";
       dynamicChangeTwo();
       return;
     }
@@ -237,7 +237,7 @@ document.addEventListener("keydown", (event) => {
     if (positionTwo == 0) {
       squares[positionTwo].removeChild(document.querySelector(".selectedTwo"));
       positionTwo = 5;
-      charSelectedTwo.src = "../images/selection_images/char-vega.png";
+      charSelectedTwo.src = "./images/selection_images/char-vega.png";
       dynamicChangeTwo();
       return;
     }
@@ -245,7 +245,7 @@ document.addEventListener("keydown", (event) => {
     if (positionTwo == 6) {
       squares[positionTwo].removeChild(document.querySelector(".selectedTwo"));
       positionTwo = 11;
-      charSelectedTwo.src = "../images/selection_images/char-bison.png";
+      charSelectedTwo.src = "./images/selection_images/char-bison.png";
       dynamicChangeTwo();
       return;
     }
@@ -287,7 +287,6 @@ function confirmPlayer(player) {
     if (array.length === 2) {
       document.getElementById("container").style.display = "none";
       gameState = getCharactersArray(array);
-      console.log(gameState);
       new StreetFighterGame().start();
     }
   }
