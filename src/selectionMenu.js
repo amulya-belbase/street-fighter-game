@@ -93,7 +93,7 @@ document.addEventListener("keydown", (event) => {
     if(!playerObj.playerName){
       playerObj.playerName = 'ryu';
     }
-    positionOne = null;
+    positionOne = 0;
     confirmPlayer(playerObj);
   }
   if (event.code == "Numpad6") {
@@ -207,7 +207,7 @@ document.addEventListener("keydown", (event) => {
     if(!playerObj.playerName){
       playerObj.playerName = 'ken';
     }
-    positionTwo = null;
+    positionTwo = 6;
     confirmPlayer(playerObj);
   }
   if (event.code == "KeyL") {
@@ -274,7 +274,6 @@ document.addEventListener("keydown", (event) => {
   }
 
 });
-
 
 
 // ============================ FOR PLAYERS ARRAY =============================

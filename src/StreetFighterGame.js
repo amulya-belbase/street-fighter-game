@@ -75,7 +75,6 @@ function resetGame(thisInstance){
       hitPoints: HEALTH_MAX_HIT_POINTS,
     },
   ];
-
 }
 
 
@@ -101,10 +100,17 @@ function getWinner(context, winnerName) {
       return;
 
     case "guile":
-    context.drawImage(for_characters, 131,642,128,112, 10, 10, 128, 112);   
-    context.drawImage(for_letters, 88,72,42,9, context.canvas.width/2 - 15, 66, 42, 9);
-    getLetters(context);
-    return;
+      context.drawImage(for_characters, 131,642,128,112, 10, 10, 128, 112);   
+      context.drawImage(for_letters, 88,72,42,9, context.canvas.width/2 - 15, 66, 42, 9);
+      getLetters(context);
+      return;
+
+    case "balrog":
+      context.drawImage(for_characters, 228,868,128,112, 10, 10, 128, 112);   
+      context.drawImage(for_letters, 296,40,55,9, context.canvas.width/2 - 22, 66, 55, 9);
+      getLetters(context);
+      return;
+
     }
 }
 
@@ -125,6 +131,10 @@ function getLoser(context, loserName) {
     
     case "guile":
       context.drawImage(for_characters, 587,642,108,112, context.canvas.width - 122, 10, 108, 112);
+      return;
+    
+    case "balrog":
+      context.drawImage(for_characters, 357,868,128,112, context.canvas.width - 122, 10, 128, 112);
       return;
     }
   }
@@ -160,3 +170,4 @@ document.addEventListener("keydown", function (event) {
     newI.start();
   }
 });
+

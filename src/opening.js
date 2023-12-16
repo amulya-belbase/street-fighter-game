@@ -2,6 +2,7 @@
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const for_letters = document.querySelector('img[alt="misc"]');
 
 const welcome_screen = document.querySelector('img[alt="welcome_screen"]');
 const welcome_logo = document.querySelector('img[alt="welcome_logo"]');
@@ -39,6 +40,8 @@ timeoutId = setTimeout(animateWelcomeScreen, delay);        // calling the funct
 function cameraTimer(){
     if(cameraY > 270) {
         ctx.drawImage(welcome_logo,16,21,288,126,122,50,145,60);
+        ctx.drawImage(for_letters, 369, 8, 110, 14, 140, 140, 110, 14);
+
         clearTimeout(timeoutId);
         return;
     };
