@@ -8,6 +8,7 @@ let bgm = document.querySelector('audio#background-music');
 export function startGame(){
   playSound(bgm);
   window.addEventListener("load", function () {
+    animateWelcomeScreen();
     window.addEventListener('click', function (){
       stopSound(bgm);
     selectionMenu();

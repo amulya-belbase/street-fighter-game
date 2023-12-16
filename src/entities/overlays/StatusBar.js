@@ -13,12 +13,6 @@ import { FPS } from "../../constants/game.js";
 import { gameState } from "../../selectionMenu.js";
 import { drawFrame, getContext } from "../../utils/context.js";
 
-let flag = false;
-const gameOver = new Image();
-gameOver.src = "../../images/misc.png";
-
-const endBanner = new Image(); // Create new img element
-endBanner.src = "../../images/character selection.png"; // Set source path
 
 export class StatusBar {
   context = getContext();
