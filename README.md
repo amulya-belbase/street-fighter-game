@@ -56,6 +56,6 @@ Player 2 Game Controls:
 
 =================================================================
 
-After the game ends, you can press Esc button to restart the game OR Key N to start a new game.
+Whenever the game ends, you can press Esc button to restart the game OR Key N to start a new game.
 
 =================================================================
