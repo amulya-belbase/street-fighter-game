@@ -6,6 +6,7 @@ export function getContext() {
   }
 
 export function drawFrame(context,image,dimension, x,y,direction=1){
+
     const [sourceX, sourceY, sourceWidth, sourceHeight] = dimension;
     context.scale(direction, 1);
     context.drawImage(
@@ -14,4 +15,4 @@ export function drawFrame(context,image,dimension, x,y,direction=1){
         x*direction, y, sourceWidth, sourceHeight,
     );
     context.setTransform(1,0,0,1,0,0);
-} 
+}

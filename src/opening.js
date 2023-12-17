@@ -17,6 +17,8 @@ let timeoutId;
 let frameIndex = 0;
 let delay = 1000/10; // Delay in milliseconds between frames
 let cameraY = 0;
+
+
 export function animateWelcomeScreen() {
     if (frameIndex < FIGHTERS.length) {
         const [x, y, width, height] = FIGHTERS[frameIndex];     // destructuring fighters array

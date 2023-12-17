@@ -106,6 +106,7 @@ document.addEventListener("keydown", (event) => {
     }
 
     if (positionOne == 11) {
+      
       squares[positionOne].removeChild(document.querySelector(".selectedOne"));
       positionOne = 6;
       charSelectedOne.src = "./images/selection_images/char-ken.png";
@@ -210,6 +211,7 @@ document.addEventListener("keydown", (event) => {
     positionTwo = 6;
     confirmPlayer(playerObj);
   }
+
   if (event.code == "KeyL") {
     if (positionTwo == 11) {
       squares[positionTwo].removeChild(document.querySelector(".selectedTwo"));
@@ -279,14 +281,24 @@ document.addEventListener("keydown", (event) => {
 // ============================ FOR PLAYERS ARRAY =============================
 
 export let gameState;
-const array = [];
-function confirmPlayer(player) {
+let array = [];
+export function confirmPlayer(player) {
   while (array.length < 2 && !array.includes(player)) {
     array.push(player); 
     if (array.length === 2) {
       document.getElementById("container").style.display = "none";
       gameState = getCharactersArray(array);
-      new StreetFighterGame().start();
+      newGame();
     }
   }
+}
+
+// To reset the characters array for new game
+export function resetCharactersArray(){
+  array = [];
+}
+
+export function newGame(){
+  console.log("New game called")
+  new StreetFighterGame().start();
 }

@@ -5,7 +5,7 @@ export class HitSplash {
     constructor(args, time, entityList){
         const [x,y,playerId] = args;
         this.image = document.querySelector('img[alt="decals"]');
-        this.position = {x,y};
+        this.position = [x,y];
         this.playerId = playerId;
         this.entityList = entityList;
         this.frames = [];
@@ -14,7 +14,7 @@ export class HitSplash {
     }
 
     update(time){
-        if(time.previous < this.animationTimer) return;
+        if(time.previous < this.animationTimer + 4 * FRAME_TIME) return;
         this.animationFrame += 1;
         this.animationTimer = time.previous;
 
@@ -25,7 +25,7 @@ export class HitSplash {
         const [
             [x,y,width,height],[originX, originY],
         ] = this.frames[this.animationFrame + this.playerId * 4];
-
+        // console.log([x,y,width,height],[originX, originY])
         context.drawImage(
             this.image,
             x,y,

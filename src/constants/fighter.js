@@ -103,6 +103,7 @@ export const PushBox = {
     CROUCH: [-16,-50,32,50],
 };
 
+// To determine player hurt areas
 export const HurtBox = {
     IDLE: [[-8,-88,24,16],[-26,-74,40,42],[-26,-31,40,32]],
     BACKWARD: [[-19,-88,24,16],[-26,-74,40,42],[-26,-31,40,32]],

@@ -15,12 +15,11 @@ import { drawFrame, getContext } from "../../utils/context.js";
 
 
 export class StatusBar {
-  context = getContext();
   time = 99;
   timeTimer = 0;
   timeFlashTimer = 0;
   useFlashFrames = false;
-
+  gameOverFlag = false;
   healthBars = [
     {
       timer: 0,
@@ -112,6 +111,8 @@ export class StatusBar {
     ["tag-balrog", [296,40,55,9]],
   ]);
   constructor() {
+    this.context = getContext();
+
     this.image = document.querySelector('img[alt="misc"]');
 
     this.names = gameState.fighters.map(({ id }) => `tag-${id.toLowerCase()}`);
@@ -154,7 +155,8 @@ export class StatusBar {
         } else {
           winnerName = name1;
         }
-        setTimeout(() => this.resetHealth(winnerName,loserName,this), 1000);
+        this.gameOverFlag = true;
+        setTimeout(() => this.resetHealth(winnerName,loserName,this), 2000);
       }
     }
   }
@@ -179,8 +181,8 @@ export class StatusBar {
     this.updateKoIcon(time);
   }
 
-  drawGameOver(context) {
-    context.drawImage(this.image, 369, 73, 110, 14, 150, 150, 110, 14);
+  drawGameOver() {
+    this.context.drawImage(this.image, 369, 73, 110, 14, 150, 150, 110, 14);
   }
 
   drawFrame(context, frameKey, x, y, direction = 1) {
@@ -217,7 +219,7 @@ export class StatusBar {
   }
 
   drawTime(context) {
-    const timeString = String(this.time).padStart(2, "00");
+    const timeString = String(Math.max(this.time,0)).padStart(2, "00");
     const flashFrame = TIME_FRAME_KEYS[Number(this.useFlashFrames)];
     this.drawFrame(context, `${flashFrame}-${timeString.charAt(0)}`, 178, 33);
     this.drawFrame(context, `${flashFrame}-${timeString.charAt(1)}`, 194, 33);
@@ -246,7 +248,7 @@ export class StatusBar {
     this.drawScoreLabel(context, "1P", 4);
     this.drawScore(context, gameState.fighters[0].score, 45);
 
-    this.drawScoreLabel(context, "ANT", 133);
+    this.drawScoreLabel(context, "LFR", 133);
     this.drawScore(context, 50000, 177);
 
     this.drawScoreLabel(context, "2P", 269);
@@ -258,6 +260,10 @@ export class StatusBar {
     this.drawHealthBars(context);
     this.drawNameTags(context);
     this.drawTime(context);
+    if(this.gameOverFlag){
+      this.drawGameOver();
+      this.gameOverFlag = false;
+    }
 
   }
 

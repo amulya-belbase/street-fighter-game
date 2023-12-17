@@ -10,7 +10,7 @@ const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 // welcome banner, click eventlistener for audio play
-function welcome() {
+export function welcome() {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
   ctx.drawImage(welcome_logo, 16, 21, 288, 126, 40, 20, 288, 126);
@@ -28,7 +28,7 @@ function startGame() {
 }
 
 // starts the player selection menu, and destroys the event listener
-function toStarGame() {
+export function toStarGame() {
   stopSound(bgm);
   selectionMenu();
   window.removeEventListener("click", toStarGame);

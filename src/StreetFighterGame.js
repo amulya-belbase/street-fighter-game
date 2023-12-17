@@ -2,7 +2,8 @@ import { registerKeyboardEvent } from "./engine/InputHandler.js";
 import { getContext } from "./utils/context.js";
 import { BattleScene } from "./scenes/BattleScene.js";
 import { HEALTH_MAX_HIT_POINTS } from "./constants/battle.js";
-import { gameState } from "./selectionMenu.js";
+import { gameState, resetCharactersArray } from "./selectionMenu.js";
+import { toStarGame } from "./index.js";
 
 
 const for_letters = document.querySelector('img[alt="misc"]');
@@ -10,7 +11,7 @@ const for_characters = document.querySelector('img[alt="character_selection"]');
 
 
 export let canvas_window = false;
-let array = [];
+
 export class StreetFighterGame {
   context = getContext();
   frameTime = {
@@ -45,6 +46,7 @@ export class StreetFighterGame {
 
   start() {
     registerKeyboardEvent();
+    canvas_window = false;
     window.requestAnimationFrame(this.frame.bind(this));
   }
 
@@ -137,37 +139,39 @@ function getLoser(context, loserName) {
       context.drawImage(for_characters, 357,868,128,112, context.canvas.width - 122, 10, 128, 112);
       return;
     }
-  }
+}
     
-    function getLetters(context){
-      context.drawImage(for_letters, 101, 125, 10, 10, context.canvas.width/2 - 15, 80, 10, 10);      // W
-      context.drawImage(for_letters, 125, 113, 9, 10, context.canvas.width/2 - 5, 80, 9, 10);         // I
-      context.drawImage(for_letters, 185, 113, 11, 10, context.canvas.width/2 + 4, 80, 11, 10);       // N
-      context.drawImage(for_letters, 53, 125, 10, 10, context.canvas.width/2 + 15, 80, 10, 10);       // S
-      
-      // CONTINUE? PRESS START
-      context.drawImage(for_letters, 386, 41, 93, 14, context.canvas.width/2 - 100, 200, 93, 14);
-      context.drawImage(for_letters, 369, 8, 110, 14, context.canvas.width/2, 200, 110, 14);
-      
-      // YOU
-      context.drawImage(for_letters, 125, 125, 10, 10, 40, 140, 40, 40);
-      context.drawImage(for_letters, 197, 113, 10, 10, 80, 140, 40, 40);
-      context.drawImage(for_letters, 77, 125, 10, 10, 120, 140, 40, 40);
-      
-      //SUCK
-      context.drawImage(for_letters, 53, 125, 10, 10, 170, 140, 40, 40);
-      context.drawImage(for_letters, 77, 125, 10, 10, 210, 140, 40, 40);
-      context.drawImage(for_letters, 53, 113, 10, 10, 250, 140, 40, 40);
-      context.drawImage(for_letters, 149, 113, 10, 10, 290, 140, 40, 40);
-      context.drawImage(for_letters, 22,89,3,10, 335, 140, 10, 40);
-    }
+function getLetters(context){
+  context.drawImage(for_letters, 101, 125, 10, 10, context.canvas.width/2 - 15, 80, 10, 10);      // W
+  context.drawImage(for_letters, 125, 113, 9, 10, context.canvas.width/2 - 5, 80, 9, 10);         // I
+  context.drawImage(for_letters, 185, 113, 11, 10, context.canvas.width/2 + 4, 80, 11, 10);       // N
+  context.drawImage(for_letters, 53, 125, 10, 10, context.canvas.width/2 + 15, 80, 10, 10);       // S
+  
+  // CONTINUE? PRESS START
+  context.drawImage(for_letters, 386, 41, 93, 14, context.canvas.width/2 - 100, 200, 93, 14);
+  context.drawImage(for_letters, 369, 8, 110, 14, context.canvas.width/2, 200, 110, 14);
+  
+  // YOU
+  context.drawImage(for_letters, 125, 125, 10, 10, 40, 140, 40, 40);
+  context.drawImage(for_letters, 197, 113, 10, 10, 80, 140, 40, 40);
+  context.drawImage(for_letters, 77, 125, 10, 10, 120, 140, 40, 40);
+  
+  //SUCK!
+  context.drawImage(for_letters, 53, 125, 10, 10, 170, 140, 40, 40);
+  context.drawImage(for_letters, 77, 125, 10, 10, 210, 140, 40, 40);
+  context.drawImage(for_letters, 53, 113, 10, 10, 250, 140, 40, 40);
+  context.drawImage(for_letters, 149, 113, 10, 10, 290, 140, 40, 40);
+  context.drawImage(for_letters, 22,89,3,10, 335, 140, 10, 40);
+}
     
-    // RESTARTS THE GAME 
+
 document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    canvas_window = false;
+  if (event.code === "Escape") {
     const newI = new StreetFighterGame();
     newI.start();
   }
+  if (event.code === "KeyN") {
+    resetCharactersArray();
+    toStarGame();
+  }
 });
-

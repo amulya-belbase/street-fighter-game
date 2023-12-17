@@ -629,8 +629,6 @@ export class Fighter {
       attackStrength,
       );
       this.changeState(newState);
-
-
   }
 
   updateStageConstraints(time, context, camera) {
